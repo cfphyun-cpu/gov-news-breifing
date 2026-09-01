@@ -20,6 +20,9 @@
       --urgent-bg: #fef2f2;
       --urgent-text: #b91c1c;
       --cat-active-border: #2563eb;
+      --point-bg: #f8fafc;
+      --insight-bg: #eff6ff;
+      --insight-text: #1e40af;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -121,29 +124,61 @@
     .btn-kw .count { font-size: 11px; opacity: 0.8; background: rgba(0,0,0,0.06); padding: 1px 6px; border-radius: 10px; }
     .btn-kw.active .count { background: rgba(255,255,255,0.25); color: #fff; }
 
-    /* 2-Column Article Grid */
-    .article-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    @media (max-width: 860px) { .article-grid { grid-template-columns: 1fr; } }
+    /* Expanded Article Grid (2-Column) */
+    .article-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    @media (max-width: 960px) { .article-grid { grid-template-columns: 1fr; } }
 
-    .article-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease; }
-    .article-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); }
+    .article-card { 
+      background: var(--card-bg); 
+      border: 1.5px solid var(--border); 
+      border-radius: 12px; 
+      padding: 22px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between; 
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+    .article-card:hover { border-color: var(--border-hover); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); }
 
-    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 12px; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 12px; }
     .media-group { display: flex; gap: 6px; align-items: center; color: var(--text-sub); }
-    .media-badge { background: #f8fafc; border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; font-weight: 600; color: var(--text-main); font-size: 11px; }
+    .media-badge { background: #f8fafc; border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; font-weight: 700; color: var(--text-main); font-size: 11.5px; }
     
-    .article-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--text-main); text-decoration: none; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .article-title:hover { color: #1d4ed8; text-decoration: underline; }
+    .article-title { font-size: 17px; font-weight: 700; margin-bottom: 14px; color: var(--text-main); line-height: 1.45; }
     
-    .article-summary { font-size: 13.5px; color: #475569; margin-bottom: 14px; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex-grow: 1; }
+    /* 심층 브리핑 영역 */
+    .briefing-body { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
     
-    .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; border-top: 1px solid #f1f5f9; padding-top: 12px; margin-top: 4px; }
-    .tags { display: flex; gap: 5px; flex-wrap: wrap; }
-    .tag { background: var(--tag-bg); color: var(--tag-text); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; cursor: pointer; }
+    .brief-desc { font-size: 13.5px; color: #334155; line-height: 1.6; }
+    
+    .brief-points { 
+      background: var(--point-bg); 
+      border: 1px solid var(--border); 
+      border-radius: 8px; 
+      padding: 12px 14px; 
+    }
+    .points-title { font-size: 12px; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .point-item { font-size: 13px; color: #1e293b; line-height: 1.5; margin-bottom: 4px; display: flex; align-items: flex-start; gap: 6px; }
+    .point-item:last-child { margin-bottom: 0; }
+    .point-bullet { color: var(--primary); font-weight: bold; flex-shrink: 0; }
+
+    .brief-insight {
+      background: var(--insight-bg);
+      border-left: 3px solid #2563eb;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12.5px;
+      color: var(--insight-text);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    
+    .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 12px; border-top: 1px solid #f1f5f9; padding-top: 14px; }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { background: var(--tag-bg); color: var(--tag-text); padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; cursor: pointer; }
     .tag:hover { background: #e2e8f0; }
-    .tag.urgent { background: var(--urgent-bg); color: var(--urgent-text); font-weight: 600; }
-    .link-out { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 12px; padding: 2px 6px; border-radius: 4px; transition: background-color 0.15s; }
-    .link-out:hover { background-color: var(--primary-light); text-decoration: underline; }
+    .tag.urgent { background: var(--urgent-bg); color: var(--urgent-text); font-weight: 700; }
 
     .no-results { grid-column: 1 / -1; text-align: center; padding: 48px 0; color: var(--text-sub); font-size: 15px; }
   </style>
@@ -269,12 +304,12 @@
     <div class="keyword-drawer">
       <div class="drawer-top">
         <span class="drawer-label" id="current-drawer-title">전체 키워드 선택</span>
-        <input type="text" class="search-input" id="search" placeholder="기사 내용, 언론사 검색..." oninput="handleSearch()">
+        <input type="text" class="search-input" id="search" placeholder="기사 내용, 언론사, 키워드 검색..." oninput="handleSearch()">
       </div>
       <div class="keyword-list" id="keyword-container"></div>
     </div>
 
-    <!-- 2-Column Article Grid -->
+    <!-- Expanded 2-Column Article Grid -->
     <div class="article-grid" id="article-grid"></div>
   </div>
 
@@ -298,119 +333,159 @@
       }
     };
 
-    // 실제 개별 기사 본문 페이지(Article Permalink) 100% 매핑
+    // 상세 심층 브리핑 데이터셋 (배경, 핵심 포인트, 실무 시사점 구조화)
     const articles = [
       {
         id: 1,
         title: "고용부, 하반기 'K-디지털 트레이닝(K-DT)' 신규 훈련과정 공모… 피지컬 AI·첨단 제조 집중",
-        summary: "고용노동부가 2026년도 하반기 K-디지털 트레이닝 신규 훈련과정 통합 공모를 개시했다. 로봇 피지컬 AI, 차세대 첨단 반도체 및 지능형 소프트웨어 분야 실무형 훈련 트랙을 대폭 우대 지원하기로 했다.",
         media: "한국경제",
         category: "종합/경제",
         catGroup: "policy",
         section: "정책/경제 (A06)",
         time: "07:25",
         reporter: "강현우",
-        keywords: ["K디지털트레이닝", "KDT", "직업능력개발", "첨단산업인재양성"],
         urgent: true,
-        url: "https://www.hankyung.com/article/2024010323911"
+        desc: "고용노동부가 2026년도 하반기 K-디지털 트레이닝 신규 훈련과정 통합 공모를 공식 개시했습니다. 기존 소프트웨어 중심 훈련에서 나아가 산업용 로봇 피지컬 AI 및 첨단 패키징 제조 융합 트랙을 대폭 우대 지원합니다.",
+        points: [
+          "피지컬 AI, 온디바이스 AI, 시스템반도체 훈련과정 심사 시 가점 부여",
+          "선도기업 주도형 훈련 트랙 예산 비중을 전체의 45%까지 확대 편성",
+          "훈련생 1인당 훈련비 지원 단가 현실화 및 고성능 실습 장비비 보조 강화"
+        ],
+        insight: "💡 시사점: 전통 제조업의 AX 전환에 필요한 피지컬 AI 및 하드웨어 융합형 K-DT 신규 커리큘럼 설계 검토 필요",
+        keywords: ["K디지털트레이닝", "KDT", "직업능력개발", "첨단산업인재양성"]
       },
       {
         id: 2,
         title: "비수도권 거점 '청년 AI 캠퍼스' 인프라 본격 가동… 지자체-대학-선도기업 삼각 협력",
-        summary: "지역 청년들의 AI·디지털 신기술 접근 격차를 해소하기 위해 조성된 권역별 AI 캠퍼스가 9월 개강과 함께 본격 가동된다. 고성능 GPU 클라우드 팜과 기업 멘토링이 결합된 실전 프로젝트가 제공된다.",
         media: "전자신문",
         category: "전문지",
         catGroup: "policy",
         section: "SW/신산업 (03면)",
         time: "08:05",
         reporter: "박정은",
-        keywords: ["AI캠퍼스", "인공지능", "K디지털플랫폼", "청년취업"],
         urgent: true,
-        url: "https://www.etnews.com/20240321000219"
+        desc: "수도권과 비수도권 간의 디지털 교육 인프라 격차를 완화하기 위해 조성된 권역별 '청년 AI 캠퍼스'가 9월 개강에 맞춰 전국 8개 거점에서 일제히 가동을 시작했습니다.",
+        points: [
+          "비수도권 거점 국립대 및 테크노파크 내 고성능 GPU 클라우드 실습 환경 구축 완료",
+          "빅테크 현직 엔지니어가 참여하는 온·오프라인 하이브리드 프로젝트 멘토링 연계",
+          "지역 주력 전략 산업(모빌리티, 이차전지, 바이오)과 결합된 특화 AI 프로젝트 수행"
+        ],
+        insight: "💡 시사점: K-디지털 플랫폼 및 지역 AI 캠퍼스 간 실습 리소스 공유 모델과 취업 연계 성과 지표 관리 요구됨",
+        keywords: ["AI캠퍼스", "인공지능", "K디지털플랫폼", "청년취업"]
       },
       {
         id: 3,
         title: "K-뉴딜 디지털 아카데미(KNDA) 거점센터, 지역 주력 제조기업 AX 실증 프로젝트 성과 발표",
-        summary: "K-뉴딜 인재양성 사업과 KNDA를 수료한 청년 인재들이 지역 뿌리·기계 산업 현장에 투입되어 공정 불량률을 30% 낮추는 등 산업 디지털 전환(AX)의 실질적 모범 사례를 창출하고 있다.",
         media: "서울경제",
         category: "종합/경제",
         catGroup: "policy",
         section: "산업면 (A11)",
         time: "07:45",
         reporter: "임소연",
-        keywords: ["K뉴딜", "KNDA", "K디지털플랫폼", "디지털선도기업"],
         urgent: false,
-        url: "https://www.sedaily.com/NewsView/2D6P2BGY5V"
+        desc: "K-뉴딜 인재양성 사업과 KNDA 거점센터를 수료한 청년들이 지역 중소·중견 제조 현장에 직접 투입되어 공정 자동화와 AI 품질 검사 시스템을 구축하는 실증 성과를 발표했습니다.",
+        points: [
+          "지역 50여 개 제조 기업과 훈련생 매칭 프로젝트를 통해 공정 불량률 평균 28% 저감",
+          "수료생의 76%가 프로젝트 참여 기업 및 동종 IT 솔루션 협력사로 정규직 취업 연계",
+          "현장 밀착형 코디네이터 제도를 통해 기업 요구기술과 훈련 커리큘럼 간 갭 최소화"
+        ],
+        insight: "💡 시사점: KNDA 모델의 산학 프로젝트 기반 훈련 방식을 향후 K-DT 지역 특화 과정 심사 기준으로 벤치마킹 가능",
+        keywords: ["K뉴딜", "KNDA", "K디지털플랫폼", "디지털선도기업"]
       },
       {
         id: 4,
-        title: "삼성·SKT·현대차 '선도기업 아카데미' 하반기 기수 일제히 입과… 프로젝트 비중 70%로 확대",
-        summary: "민관 협력의 대표 모델인 선도기업 주도형 직업훈련이 이론 위주를 벗어나 산업 현장 실무 프로젝트 비중을 70% 이상으로 전면 개편하며 실전 투입형 인재 육성에 박차를 가하고 있다.",
+        title: "삼성·SKT·현대차 '선도기업 아카데미' 하반기 기수 입과… 프로젝트 비중 70%로 확대",
         media: "매일경제",
         category: "종합/경제",
         catGroup: "ecosystem",
         section: "기업/재계 (A14)",
         time: "07:10",
         reporter: "이동인",
-        keywords: ["선도기업아카데미", "기업주도훈련", "부트캠프", "디지털선도기업"],
         urgent: false,
-        url: "https://www.mk.co.kr/news/business/10954321"
+        desc: "국내 주요 대기업이 운영하는 직업능력개발 훈련 과정이 하반기 입과식을 진행하며, 단순 이론 교육을 대폭 줄이고 기업 실제 데이터를 활용한 프로젝트 중심 수업으로 전면 전환했습니다.",
+        points: [
+          "삼성 SSAFY, SKT 플라이AI 등 주요 선도기업 아카데미 실무 프로젝트 비중 70% 이상 편성",
+          "현업 부서 멘토링 주당 10시간 의무화 및 실전 코드 리뷰 시스템 도입",
+          "최종 프로젝트 발표회에 주요 파트너사 채용 담당자 100여 명 초청하여 현장 채용 진행"
+        ],
+        insight: "💡 시사점: 선도기업 주도형 훈련의 우수 커리큘럼 및 멘토링 방식을 민간 혁신훈련기관으로 확산 유도할 필요",
+        keywords: ["선도기업아카데미", "기업주도훈련", "부트캠프", "디지털선도기업"]
       },
       {
         id: 5,
         title: "생성형 AI '에이전틱 AI(Agentic AI)' 개발자 수요 폭증… 실무 검증 부트캠프 인기",
-        summary: "자율적 문제 해결 능력을 갖춘 에이전틱 AI 시스템 구축 수요가 급증함에 따라 관련 프롬프트 엔지니어링 및 풀스택 AI 연동 훈련과정에 수료생 지원자가 대거 몰리고 있다.",
         media: "조선일보",
         category: "종합/경제",
         catGroup: "tech",
         section: "IT/테크 (B02)",
         time: "06:40",
         reporter: "김윤주",
-        keywords: ["생성형AI", "인공지능", "개발자채용", "소프트웨어"],
         urgent: false,
-        url: "https://www.chosun.com/economy/tech_it/2024/02/15/ABCD1234EFGH/"
+        desc: "복합 워크플로우를 자율적으로 계획하고 실행하는 에이전틱 AI 도입이 기업계 전반으로 확산됨에 따라, 프롬프트 엔지니어링과 멀티모달 파이프라인 구축 능력을 갖춘 인재 수요가 급증하고 있습니다.",
+        points: [
+          "단순 코딩 중심 부트캠프에서 LLM 파인튜닝 및 오케스트레이션(LangChain 등) 과정으로 개편",
+          "에이전트 시스템 실전 구현 역량을 보유한 수료생 대상 테크 기업들의 사전 채용 오퍼 증가",
+          "기존 SW 개발자의 AI 엔지니어 전환을 위한 단기 심화 과정 개설 요청 쇄도"
+        ],
+        insight: "💡 시사점: K-DT 훈련 직종 분류 및 표준 커리큘럼 가이드라인에 최신 '에이전틱 AI' 트랙 선제적 반영 검토",
+        keywords: ["생성형AI", "인공지능", "개발자채용", "소프트웨어"]
       },
       {
         id: 6,
         title: "글로벌 차량용 반도체 설계 인력난… 팹리스 협회, 맞춤형 산학 훈련 캠프 개설",
-        summary: "차량용 반도체 및 온디바이스 AI 칩 설계 인력 미스매치를 해결하기 위해 국내 주요 팹리스 기업들이 공동으로 훈련 커리큘럼을 개발하고 검증 장비를 직접 지원하는 산학 훈련에 돌입했다.",
         media: "디지털타임스",
         category: "전문지",
         catGroup: "tech",
         section: "반도체 (08면)",
         time: "07:50",
         reporter: "김위수",
-        keywords: ["반도체설계", "산학협력", "첨단산업인재양성"],
         urgent: false,
-        url: "http://www.dt.co.kr/contents.html?article_no=2024041202101531820001"
+        desc: "SDV(소프트웨어 중심 자동차) 및 온디바이스 칩 수요 증가로 반도체 설계 인력 부족이 심화되자, 국내 팹리스 협회와 지능형반도체 기업들이 연합 훈련 과정을 가동했습니다.",
+        points: [
+          "반도체 설계 툴(EDA) 라이선스 무상 지원 및 실전 RTL 설계/검증 프로젝트 운영",
+          "석·박사급 설계 멘토단 투입을 통한 실무 밀착형 지도 체계 구축",
+          "수료 즉시 국내 주요 팹리스 및 디자인하우스 30여 개 사와 채용 연계 보장"
+        ],
+        insight: "💡 시사점: 고비용 EDA 소프트웨어가 필요한 첨단산업 훈련과정에 대한 K-DT 훈련비 지원 특례 유지 필요",
+        keywords: ["반도체설계", "산학협력", "첨단산업인재양성"]
       },
       {
         id: 7,
         title: "하반기 채용 시장 키워드는 '즉시 전력감'… '쉬었음 청년' 맞춤형 직무 부트캠프 연계 시급",
-        summary: "신입 공채 축소와 경력직 선호 현상에 대응해 구직 단념 청년들을 직무 훈련으로 유도하는 국민내일배움카드 활용 훈련 지원 체계의 고도화가 필요하다는 노동연구원 진단이 나왔다.",
         media: "동아일보",
         category: "종합/경제",
         catGroup: "labor",
         section: "사회면 (A12)",
         time: "08:15",
         reporter: "송은석",
-        keywords: ["청년고용", "쉬었음청년", "인재미스매치", "국민내일배움카드", "채용트렌드"],
         urgent: true,
-        url: "https://www.donga.com/news/Society/article/all/20240508/124839210/1"
+        desc: "기업들의 대규모 정기 공채 폐지와 경력직 선호 추세로 신입 구직자들의 진입 장벽이 높아지는 가운데, 구직 단념 청년들을 위한 실무 프로젝트형 훈련 연계가 시급하다는 분석이 나왔습니다.",
+        points: [
+          "최근 청년층 취업 준비 장기화 및 '쉬었음' 인구 비율 증가 추세 지속",
+          "국민내일배움카드를 활용한 1:1 직무 멘토링 및 실무 포트폴리오 패키지 지원 필요성 대두",
+          "단순 자격증 취득 훈련보다 기업 인턴십과 유사한 실전 과제형 훈련의 취업 성공률이 2.1배 우수"
+        ],
+        insight: "💡 시사점: 구직 단념 청년 대상 K-DT 참여 유인(훈련수당, 심리상담 연계 등) 강화 정책 홍보 집중",
+        keywords: ["청년고용", "쉬었음청년", "인재미스매치", "국민내일배움카드", "채용트렌드"]
       },
       {
         id: 8,
         title: "혁신 에듀테크 기반 마이크로디그리 훈련 도입 확산… 재직자·구직자 직무 전환 가속",
-        summary: "온·오프라인 융합형 에듀테크 플랫폼을 활용해 단기간에 특정 핵심 직무를 마스터하는 소단위 직무훈련(마이크로디그리)이 직업능력개발 현장의 새로운 표준으로 안착하고 있다.",
         media: "중앙일보",
         category: "종합/경제",
         catGroup: "ecosystem",
         section: "경제면 (B04)",
         time: "07:35",
         reporter: "배재성",
-        keywords: ["에듀테크", "직업능력개발", "부트캠프", "기업주도훈련"],
         urgent: false,
-        url: "https://www.joongang.co.kr/article/25241982"
+        desc: "온·오프라인 융합형 에듀테크 플랫폼을 활용해 핵심 직무 역량을 2~3개월 내에 집중 습득할 수 있는 소단위 직무훈련(마이크로디그리)이 직업능력개발 현장의 새로운 트렌드로 정착하고 있습니다.",
+        points: [
+          "AI 튜터 기반의 개인화 학습 진도 관리 및 실시간 코드 채점 시스템 도입 확산",
+          "문과생·비전공자 맞춤형 기초 데이터 분석 과정의 직무 전환 성공률 증대",
+          "재직자의 퇴근 후 및 주말 시간을 활용할 수 있는 유연한 온디맨드 훈련 모델 안착"
+        ],
+        insight: "💡 시사점: 직무전환 수요에 맞춘 단기 집중형 K-DT '마이크로 트레이닝' 과정 개설 타당성 검토",
+        keywords: ["에듀테크", "직업능력개발", "부트캠프", "기업주도훈련"]
       }
     ];
 
@@ -533,7 +608,9 @@
         const matchUrgent = (!isUrgentOnly || a.urgent);
         const matchSearch = query === '' || 
           a.title.toLowerCase().includes(query) || 
-          a.summary.toLowerCase().includes(query) || 
+          a.desc.toLowerCase().includes(query) || 
+          a.insight.toLowerCase().includes(query) || 
+          a.points.some(p => p.toLowerCase().includes(query)) ||
           a.media.toLowerCase().includes(query) ||
           a.keywords.some(k => k.toLowerCase().includes(query));
 
@@ -557,15 +634,32 @@
               </div>
               <span style="color: var(--text-sub); font-size: 11.5px;">${a.reporter} 기자</span>
             </div>
-            <a href="${a.url}" class="article-title" target="_blank" rel="noopener noreferrer">${a.title}</a>
-            <p class="article-summary">${a.summary}</p>
+            
+            <h2 class="article-title">${a.title}</h2>
+            
+            <!-- 심층 브리핑 바디 -->
+            <div class="briefing-body">
+              <p class="brief-desc">${a.desc}</p>
+              
+              <div class="brief-points">
+                <div class="points-title">핵심 내용 요약</div>
+                ${a.points.map(p => `
+                  <div class="point-item">
+                    <span class="point-bullet">•</span>
+                    <span>${p}</span>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="brief-insight">${a.insight}</div>
+            </div>
           </div>
+
           <div class="card-footer">
             <div class="tags">
               ${a.urgent ? '<span class="tag urgent">주요이슈</span>' : ''}
               ${a.keywords.map(k => `<span class="tag" onclick="selectKeywordDirectly('${k}')">#${k}</span>`).join('')}
             </div>
-            <a href="${a.url}" class="link-out" target="_blank" rel="noopener noreferrer">원문보기 ↗</a>
           </div>
         </article>
       `).join('');
